@@ -20,3 +20,18 @@ https://releases.hashicorp.com/terraform/0.12.0-alpha2/
 ./terraform plan -var-file=aws.tfvars  -var-file=security_groups.tfvars
 ./terraform apply -var-file=aws.tfvars  -var-file=security_groups.tfvars
 ```
+
+### Simple example with Terraform using AWS provider
+  
+ `
+ # Configure the AWS Provider
+provider "aws" {
+  region  = "us-east-1"
+  shared_credentials_file = "/home/user/.aws/credentials"
+  profile = "awsterraform"
+}
+resource "aws_instance" "new-test-aws-instance" {
+  ami = "ami-00a208c7cdba991ea"
+  instance_type = "t2.micro"
+}
+`
